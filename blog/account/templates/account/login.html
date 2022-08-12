@@ -1,0 +1,21 @@
+{% extends 'account/base.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    <div class="login-wrapper">
+        <h1>Please log in</h1>
+        <form class="login-form" action=".">
+            {{ form.error }}
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="{{ field.label }} input-container">
+                    <div class="field-label">{{ field.label }}</div>{{field }}
+                </div>
+            {% endfor %}
+            <div class="submit-button">
+                <button type="submit">Login</button>
+            </div>
+            
+        </form>
+    </div>
+{% endblock content %}

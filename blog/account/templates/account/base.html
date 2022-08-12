@@ -1,4 +1,4 @@
-
+{% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
@@ -10,14 +10,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "account/css/styles.css" %}">
 </head>
 <body>
     <header class="p-3" style="background-color: #212529;">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                <rect width="40px" height="32px" fill="white" />
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><rect width="40px" height="32px" fill="white"/>
                 <text x="4" y="23" font-family="Verdana" font-size="20" fill="#212529" stroke-width="2">MD
                 </text></img></svg>
             </a>
@@ -30,8 +30,8 @@
               <li><a href="#" class="nav-link px-2 text-white">About</a></li>
             </ul>
             <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">Login</button>
-              <button type="button" class="btn btn-warning">Sign-up</button>
+              <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+              <button type="button" class="btn sign-up">Sign-up</button>
             </div>
           </div>
         </div>

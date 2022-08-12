@@ -1,0 +1,62 @@
+.login-wrapper {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 150px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center ;
+    width: 75%;
+}
+
+.input-container {
+    padding-bottom: 20px;
+}
+
+.input-container, .submit-button {
+    min-width: 50%
+}
+
+input {
+    width: 100%;
+    border-radius: 5px;
+    height: 38px;
+}
+
+.submit-button button {
+    height: 38px;
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    background-color: #2e82ff;
+    border-radius: 5px;
+    border: 1px solid #212529;
+}
+
+.submit-button button:active, .sign-up:active {
+    box-shadow: 0px 0px 1px 5px #0734ff;
+}
+
+.sign-up {
+    background-color: #2e82ff;
+    border: 1px solid #2e82ff;
+}
+
+.sign-up, .submit-button button {
+    transition: background-color 0.5s, box-shadow 0.2s;
+}
+
+.sign-up:hover, .submit-button button:hover {
+    background-color: #5297ff;
+}
+
+svg {
+    margin: 0;
+    border: 0;
+}
+

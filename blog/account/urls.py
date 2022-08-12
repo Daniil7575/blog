@@ -4,6 +4,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('authentication/', views.LoginView.as_view(), name='login'),
+    path('login/', views.LoginView.as_view(template_name='account/login.html'), name='login'),
     path('', mainpage, name='mainpage')
 ]
