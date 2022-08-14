@@ -23,15 +23,20 @@
             </a>
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+              <li><a href="#" class="nav-link px-2 bl-hover selected">Home</a></li>
+              <li><a href="#" class="nav-link px-2 bl-hover">Features</a></li>
+              <li><a href="#" class="nav-link px-2 bl-hover">Pricing</a></li>
+              <li><a href="#" class="nav-link px-2 bl-hover">FAQs</a></li>
+              <li><a href="#" class="nav-link px-2 bl-hover">About</a></li>
             </ul>
             <div class="text-end">
-              <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-              <button type="button" class="btn sign-up">Sign-up</button>
+              {% if request.user.is_authenticated %}
+                <div class="btn user-profile">{{request.user.username}}</div>
+                <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
+              {% else %}
+                <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-light  me-2">Login</button></a>
+                <button type="button" class="btn sign-up">Sign-up</button>
+              {% endif %}
             </div>
           </div>
         </div>

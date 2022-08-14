@@ -1,4 +1,4 @@
-.login-wrapper {
+.login-wrapper, .logout-page {
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -38,8 +38,8 @@ input {
     border: 1px solid #212529;
 }
 
-.submit-button button:active, .sign-up:active {
-    box-shadow: 0px 0px 1px 5px #0734ff;
+.submit-button button:active, .sign-up:active, .user-profile:active {
+    box-shadow: 0px 0px 1px 5px #2e82ff83;
 }
 
 .sign-up {
@@ -51,7 +51,7 @@ input {
     transition: background-color 0.5s, box-shadow 0.2s;
 }
 
-.sign-up:hover, .submit-button button:hover {
+.sign-up:hover, .submit-button button:hover, .user-profile:hover {
     background-color: #5297ff;
 }
 
@@ -64,3 +64,19 @@ svg {
     color: rgb(192, 1, 1);
 }
 
+.user-profile {
+    color: #2e82ff;
+}
+
+
+.bl-hover:hover {
+    color: #2e82ff;
+}
+
+.bl-hover{
+    color: white;
+}
+
+.selected {
+    color: #2e82ff83;
+}

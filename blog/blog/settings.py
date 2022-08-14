@@ -137,6 +137,7 @@ MEDIA_ROOT = Path(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
 
 AUTHENTICATION_BACKENDS = [
     'account.authentication.EmailAuthBackend',
