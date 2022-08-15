@@ -1,4 +1,4 @@
-.login-wrapper, .logout-page {
+.login-wrapper, .logout-page, .register-wrapper, .reg-done-wrapper {
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -64,12 +64,7 @@ svg {
     color: rgb(192, 1, 1);
 }
 
-.user-profile {
-    color: #2e82ff;
-}
-
-
-.bl-hover:hover {
+.user-profile, .bl-hover:hover {
     color: #2e82ff;
 }
 
@@ -79,4 +74,21 @@ svg {
 
 .selected {
     color: #2e82ff83;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
+}
+
+.reg-done-wrapper-text {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.redirect, .redirect:link, .redirect:visited {
+    text-decoration: none;
+    color: #2e82ff;
 }

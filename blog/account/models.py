@@ -11,11 +11,13 @@ class Profile(models.Model):
     profile_image = models.ImageField(
         verbose_name='Картинка профиля',
         upload_to="users/%Y/%m/%d",
-        blank=True
+        blank=True,
+        null=True,
     )
 
     date_of_birt = models.DateTimeField(
         blank=True,
+        null=True,
         verbose_name="Дата рождения"
     )
 
