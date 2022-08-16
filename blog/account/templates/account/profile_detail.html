@@ -1,0 +1,60 @@
+{% extends 'account/base.html' %}
+{% block title %}{{ request.user.username }}{% endblock title %}
+{% block content %}
+    <div class="profile-detail-wrapper">   
+        <div class="image-last-activity">
+            <div class="image-section section">
+                <h4 class="text-row-header">Фотография</h4>
+                <img class="avatar" src="{{ userprof.profile_image.url }}">
+            </div> 
+            <div class="latest-posts-section section">
+                <h4 class="text-row-header">Последние публикации</h4>
+                <div class="last-pubs">
+                    {% comment %} {% for  in  %}{% endfor %} {% endcomment %}
+                    <span class=text-row>Пример поста 1 и возможно дата и не только</span>
+                    <span class=text-row>Пример поста 2</span>
+                    <span class=text-row>Пример поста 3</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="info-section section">
+            <h4 class="text-row-header">Информация</h4>
+            <div class="text-row">
+                <span class="label">Логин: </span>
+                <span class="text">{{ userprof.user.username }}</span>
+            </div>
+    
+            <div class="text-row">
+                <span class="label">Эл. почта: </span>
+                <span class="text">{{ userprof.user.email }}</span>
+            </div>
+    
+            <div class="text-row">
+                <span class="label">Имя: </span>
+                <span class="text">{{ userprof.user.first_name }}</span>
+                
+            </div>
+    
+            <div class="text-row">
+                <span class="label">Фамилия: </span>
+                <span class="text">{{ userprof.user.last_name }}</span>
+            </div>
+    
+            <div class="text-row">
+                <span class="label">Дата рождения: </span>
+                <span class="text">{{ userprof.date_of_birth }}</span>
+            </div>
+
+            <div class="text-row">
+                <span class="label">Что-то еще 1: </span>
+                <span class="text">Может, интересы?</span>
+            </div>
+
+            <div class="text-row">
+                <span class="label">Что-то еще 2: </span>
+                <span class="text">Еще какая-то бесполезная информация</span>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

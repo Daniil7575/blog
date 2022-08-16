@@ -1,4 +1,4 @@
-.login-wrapper, .logout-page, .register-wrapper, .reg-done-wrapper {
+.login-wrapper, .logout-page, .register-wrapper, .reg-done-wrapper{
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -12,6 +12,10 @@ form {
     flex-direction: column;
     align-items: center ;
     width: 75%;
+}
+
+body {
+    min-height: 100vh;
 }
 
 .input-container {
@@ -81,14 +85,86 @@ svg {
     flex-direction: column;
 }
 
-.reg-done-wrapper-text {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    margin-left: 50px;
-}
-
 .redirect, .redirect:link, .redirect:visited {
     text-decoration: none;
     color: #2e82ff;
+}
+
+.profile-detail-wrapper {
+    display: flex;
+    align-items: flex-start; 
+    padding-top: 50px;
+}
+
+.section {
+    display: flex;
+    /* justify-content: space-between; */
+    width: 30%;
+    min-height: 100px;
+    flex-direction: column;
+    border: #2e82ff 1px solid;
+    box-shadow: 0px 2px 5px 1px #75757583;
+    border-radius: 5px;
+}
+
+.info-section {
+    width: 50vw;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.image-section{
+    /* height: 430px; */
+    padding: 5px;
+    width: auto;
+    margin-bottom: 10px;
+    
+}
+
+.latest-posts-section {
+    padding: 5px;
+    width: 312px;
+}
+
+.avatar {
+    width: 300px;
+    height: 300px;
+}
+
+.text-row {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.label {
+    width: 130px;
+}
+
+.text {
+    width: calc(100% - 130px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* white-space: nowrap; */
+}
+
+.text-row-header {
+    text-align: center;
+    border-bottom: #2e82ff 1px solid;
+}
+
+.last-pubs {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-last-activity {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    /* min-height: 100%; */
 }

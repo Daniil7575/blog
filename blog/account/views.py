@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render
+from django.views.generic import DetailView
+from django.http import HttpRequest
 
 from .forms import RegisterForm
 from .models import Profile
@@ -23,3 +25,17 @@ def register(request):
     else:
         user_form = RegisterForm()
     return render(request, 'account/register.html', {'user_form': user_form})
+
+
+class ProfileView(DetailView):
+    model = Profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = Profile.objects.get(id)
+        return ...
+
+
+def profile_detail(request: HttpRequest, profile_id):
+    user = Profile.objects.select_related().get(user_id=profile_id)
+    return render(request, 'account/profile_detail.html', {'userprof': user})

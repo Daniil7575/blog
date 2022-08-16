@@ -31,7 +31,7 @@
             </ul>
             <div class="text-end">
               {% if request.user.is_authenticated %}
-                <div class="btn user-profile">{{request.user.username}}</div>
+                <div class="btn user-profile"><a href="{% url 'profile_detail' request.user.id %}">{{request.user.username}}</a></div>
                 <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
               {% else %}
                 <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-light  me-2">Login</button></a>

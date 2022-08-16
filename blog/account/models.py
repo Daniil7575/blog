@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from django.urls import reverse
 
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -10,12 +10,12 @@ class Profile(models.Model):
 
     profile_image = models.ImageField(
         verbose_name='Картинка профиля',
-        upload_to="users/%Y/%m/%d",
+        upload_to="photos/%Y/%m/%d",
         blank=True,
         null=True,
     )
 
-    date_of_birt = models.DateTimeField(
+    date_of_birth = models.DateField(
         blank=True,
         null=True,
         verbose_name="Дата рождения"
@@ -23,3 +23,6 @@ class Profile(models.Model):
 
     def __str__(self) -> str:
         return f'Профиль {self.user.username}'
+
+    # def get_absolute_url(self):
+    #     return reverse("profile", kwargs={"profile_id": self.pk})

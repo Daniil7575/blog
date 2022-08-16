@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views
-from .views import mainpage, register
+from .views import mainpage, register, profile_detail
 
 
 urlpatterns = [
@@ -17,5 +17,7 @@ urlpatterns = [
         name="logout"
     ),
 
-    path('registration', register, name='register'),
+    path('registration/', register, name='register'),
+
+    path('profile/<int:profile_id>/', profile_detail, name='profile_detail'),
 ]
