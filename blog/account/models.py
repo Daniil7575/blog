@@ -1,6 +1,9 @@
+from turtle import width
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.utils import timezone
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -24,5 +27,47 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return f'Профиль {self.user.username}'
 
-    # def get_absolute_url(self):
-    #     return reverse("profile", kwargs={"profile_id": self.pk})
+    def get_absolute_url(self):
+        return reverse("profile", kwargs={"profile_id": self.pk})
+
+
+class Post(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Автор",
+        related_name="posts",
+        
+    )
+
+    title = models.CharField(verbose_name="Заголовок", max_length=200)
+
+    slug = models.SlugField(max_length=200, unique_for_date='published')
+
+    body = models.TextField(verbose_name="Тело поста")
+
+    published = models.DateTimeField(
+        verbose_name="Дата и время публикации", 
+        auto_now_add=True,
+    )
+
+    modified = models.DateTimeField(
+        verbose_name="Дата и время последнего изменения",
+        auto_now=True,
+    )
+
+    class Meta:
+        ordering = ['-published']
+
+    def __str__(self) -> str:
+        return self.slug
+
+    def get_absolute_url(self):
+        kwargs = {
+            'year': self.published.year,
+            'month': self.published.month,
+            'day': self.published.day,
+            'post': self.slug
+        }
+        return reverse("post_detail", kwargs=kwargs)
+    
