@@ -3,14 +3,14 @@
 from django.shortcuts import render
 # from django.views.generic import DetailView
 from django.http import HttpRequest
-
+from django.views.generic import ListView
 from .forms import RegisterForm
 from .models import Profile
 
 
 # Create your views here.
-def mainpage(request):
-    return render(request, 'account/base.html', {})
+# def mainpage(request):
+#     return render(request, 'account/base.html', {})
 
 
 def register(request):

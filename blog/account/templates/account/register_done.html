@@ -1,8 +1,8 @@
-{% extends 'account/base.html' %}
+{% extends 'posts/base.html' %}
 {% block title %}Регистрация{% endblock title %}
 {% block content %}
     <div class="reg-done-wrapper">
         <h3>Вы успешно прошли регистрацию!</h3>
-        <p><a href="{% url 'login' %}" class="redirect">Авторизуйтесь</a> с ранее введенными данными</p>
+        <p><a href="{% url 'account:login' %}" class="redirect">Авторизуйтесь</a> с ранее введенными данными</p>
     </div>
 {% endblock content %}

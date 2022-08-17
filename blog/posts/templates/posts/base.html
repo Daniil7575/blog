@@ -10,13 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static "account/css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "posts/css/styles.css" %}">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
     <header class="p-3" style="background-color: #212529;">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><rect width="40px" height="32px" fill="white"/>
                 <text x="4" y="23" font-family="Verdana" font-size="20" fill="#212529" stroke-width="2">MD
                 </text></img></svg>
@@ -31,11 +34,11 @@
             </ul>
             <div class="text-end">
               {% if request.user.is_authenticated %}
-                <div class="btn user-profile"><a href="{% url 'profile_detail' request.user.id %}">{{request.user.username}}</a></div>
-                <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
+                <div class="btn user-profile"><a href="{% url 'account:profile_detail' request.user.id %}">{{ request.user.username }}</a></div>
+                <a href="{% url 'account:logout' %}"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
               {% else %}
-                <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-light  me-2">Login</button></a>
-                <a href="{% url 'register' %}"<button type="button" class="btn sign-up">Sign-up</button></a>
+                <a href="{% url 'account:login' %}"><button type="button" class="btn btn-outline-light  me-2">Login</button></a>
+                <a href="{% url 'account:register' %}"<button type="button" class="btn sign-up">Sign-up</button></a>
               {% endif %}
             </div>
           </div>

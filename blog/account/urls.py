@@ -1,11 +1,9 @@
 from django.urls import path
 from django.contrib.auth import views
-from .views import mainpage, register, profile_detail
+from .views import register, profile_detail
 
 
 urlpatterns = [
-    path('', mainpage, name='home'),
-
     path(
         'login/',
         views.LoginView.as_view(template_name='account/login.html'),
