@@ -6,13 +6,13 @@
         {% for p in posts %}
         <div class="infinite-item">
             <div class="element">
-                <h3>{{ p.title }}</h3>
+                <a class="text-link" href="{{ p.get_absolute_url }}"><h3 class="overflow">{{ p.title }}</h3></a>
                 
             </div>
             <span class="creation-date element">{{ p.published }}</span>
 
             <div class="post-author-rating element">
-                <span class="author">{{ p.author.username }}</span>
+                <span class="author overflow">{{ p.author.username }}</span>
                 {% with p.rating as rate %}
                     <span class="rating 
                         {% if rate > 10 %}

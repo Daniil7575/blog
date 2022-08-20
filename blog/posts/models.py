@@ -39,14 +39,14 @@ class Post(models.Model):
         ordering = ['-published']
 
     def __str__(self) -> str:
-        return self.slug
+        return self.title
 
     def get_absolute_url(self):
         kwargs = {
             'year': self.published.year,
             'month': self.published.month,
             'day': self.published.day,
-            'post': self.slug
+            'post_slug': self.slug
         }
         return reverse("post_detail", kwargs=kwargs)
     

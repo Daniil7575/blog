@@ -1,4 +1,4 @@
-.login-wrapper, .logout-page, .register-wrapper, .reg-done-wrapper, .home-page-wrapper{
+.login-wrapper, .logout-page, .register-wrapper, .reg-done-wrapper, .home-page-wrapper, .post-detail-wrapper{
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -129,6 +129,9 @@ svg {
 .avatar {
     width: 300px;
     height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .text-row {
@@ -176,7 +179,7 @@ svg {
     padding-top: 50px;
 }
 
-.infinite-item {
+.infinite-item, .post-detail-wrapper {
     border: #2e82ff 2px solid;
     width: 100%;
     padding: 5px;
@@ -211,9 +214,10 @@ svg {
     border-right: #2e82ff 1px solid;
 }
 
-.author {
+.author, .author-post {
     flex: 5;
     font-weight: 500;
+    margin: 0;
     /* text-overflow: ellipsis;
     overflow: hidden; */
 }
@@ -235,3 +239,65 @@ svg {
 .last-modified-date {
     color: #ffe186;
 }
+
+.post-detail-wrapper {
+    width: 70vw;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.dates, .post-body, .author-post {
+    margin-top: 15px;
+}
+
+.dates, .post-header {
+    width: 100%;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(179, 179, 179);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-header h3 {
+    margin: 0;
+    flex: 5;
+    border-right: #2e82ff 1px solid;
+    margin-right: 5px;
+}
+
+.post-rating {
+    flex: 1;
+    font-weight: 700;
+}
+
+.line {
+    margin-top: 5px;
+    width: 100%;
+    border-bottom: #2e82ff 1px solid;
+}
+
+.blue {
+    background-color: #2e82ff;
+}
+
+.overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.text-link, .text-link:link, .text-link:visited {
+    text-decoration: none;
+    color: #2e82ff;
+}
+
+.text-link:hover {
+    color: #5297ff;
+}
+

@@ -1,0 +1,25 @@
+{% extends 'posts/base.html' %}
+{% block title %}{{ post.title }}{% endblock title %}
+{% block content %}
+    <div class="post-detail-wrapper">
+        <div class="post-header">
+            <h3 class="overflow">{{ post }}</h3>
+            <div class="post-rating">
+                ★ {{ post.rating }}
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="dates">
+            <div class="published">Опубликовано: {{ post.published }}</div>
+            <div class="modified last-modified-date">Последняя модификация: {{ post.modified }}</div>
+        </div>
+
+        <div class="author-post">
+            <a class="text-link" href="{% url 'account:profile_detail' post.author.id %}">{{ post.author }}</a>
+        </div>
+
+        <div class="post-body">
+            {{ post.body }}
+        </div>
+    </div>
+{% endblock content %}

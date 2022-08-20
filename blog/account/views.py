@@ -8,10 +8,10 @@ from .forms import RegisterForm
 from .models import Profile
 
 
+
 # Create your views here.
 # def mainpage(request):
 #     return render(request, 'account/base.html', {})
-
 
 def register(request):
     if request.method == 'POST':

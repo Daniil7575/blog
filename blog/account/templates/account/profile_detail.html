@@ -1,11 +1,20 @@
 {% extends 'posts/base.html' %}
 {% block title %}{{ request.user.username }}{% endblock title %}
+{% load static %}
 {% block content %}
     <div class="profile-detail-wrapper">   
         <div class="image-last-activity">
             <div class="image-section section">
                 <h4 class="text-row-header">Фотография</h4>
-                <img class="avatar" src="{{ userprof.profile_image.url }}">
+                {% with userprof.profile_image as photo %}
+                    {% if photo %}
+                        <img class="avatar" src="{{ photo.url }}" alt="Ваша фотография">
+                    {% else %}
+                        <div class="avatar">Ваша фотография</div>
+                    </svg>
+                    {% endif %}
+                {% endwith %}
+                
             </div> 
             <div class="latest-posts-section section">
                 <h4 class="text-row-header">Последние публикации</h4>
