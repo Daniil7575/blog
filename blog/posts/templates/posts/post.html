@@ -4,9 +4,15 @@
     <div class="post-detail-wrapper">
         <div class="post-header">
             <h3 class="overflow">{{ post }}</h3>
-            <div class="post-rating">
-                ★ {{ post.rating }}
-            </div>
+                {% with post.rating as rate %}
+                    <span class="post-rating 
+                        {% if rate > 10 %}
+                            good
+                        {% elif rate < 0 %}
+                            bad
+                        {% endif %}
+                    ">★ {{ rate }}</span>
+                {% endwith %}
         </div>
         <div class="line"></div>
         <div class="dates">
