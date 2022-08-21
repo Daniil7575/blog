@@ -301,3 +301,7 @@ svg {
     color: #5297ff;
 }
 
+.post-time {
+    display: flex;
+    justify-content: flex-end;
+}

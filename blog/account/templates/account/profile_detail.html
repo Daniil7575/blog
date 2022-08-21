@@ -1,5 +1,6 @@
 {% extends 'posts/base.html' %}
 {% block title %}{{ request.user.username }}{% endblock title %}
+{% load blog_app_tags %}
 {% load static %}
 {% block content %}
     <div class="profile-detail-wrapper">   
@@ -19,10 +20,7 @@
             <div class="latest-posts-section section">
                 <h4 class="text-row-header">Последние публикации</h4>
                 <div class="last-pubs">
-                    {% comment %} {% for  in  %}{% endfor %} {% endcomment %}
-                    <span class=text-row>Пример поста 1 и возможно дата и не только</span>
-                    <span class=text-row>Пример поста 2</span>
-                    <span class=text-row>Пример поста 3</span>
+                    {% last_activity userprof.user %}
                 </div>
             </div>
         </div>
