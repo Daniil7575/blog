@@ -14,7 +14,7 @@ class Post(models.Model):
 
     title = models.CharField(verbose_name="Заголовок", max_length=200)
 
-    slug = models.SlugField(max_length=200, unique_for_date='published')
+    slug = models.SlugField(max_length=200, unique=True)
 
     body = models.TextField(verbose_name="Тело поста")
 
@@ -42,13 +42,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        kwargs = {
-            'year': self.published.year,
-            'month': self.published.month,
-            'day': self.published.day,
-            'post_slug': self.slug
-        }
-        return reverse("post_detail", kwargs=kwargs)
+        return reverse("post_detail", kwargs={'post_slug': self.slug})
     
 
 class Comment(models.Model):
