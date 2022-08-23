@@ -19,3 +19,8 @@ class PostDetail(DetailView):
     template_name = 'posts/post.html'
     context_object_name = 'post'
     slug_url_kwarg = 'post_slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = context['post'].comments.all()
+        return context

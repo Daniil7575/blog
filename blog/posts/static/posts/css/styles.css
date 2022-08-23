@@ -265,7 +265,7 @@ svg {
     align-items: center;
 }
 
-.post-header h3 {
+.post-header h1 {
     margin: 0;
     flex: 5;
     border-right: #2e82ff 1px solid;
@@ -305,3 +305,47 @@ svg {
     display: flex;
     justify-content: flex-end;
 }
+
+/* .btn-style:hover{
+    color: #212529;
+} */
+
+.user-profile:hover{
+    color: #212529;
+}
+
+.comments {
+    padding-top: 15px;
+}
+
+.comment-date {
+    color: rgb(179, 179, 179);
+}
+
+.comments-list {
+    list-style: none;
+}
+
+.comments-list{
+    padding-left: 0;
+}
+
+.comment {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.comment-body {
+    margin-left: 5px;
+}
+
+
+
+/* .user-profile:hover {
+    padding: 0;
+}
+
+.user-profile:hover a{
+    height: 100%;
+    width: 100%;
+} */

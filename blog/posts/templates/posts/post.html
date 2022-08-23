@@ -3,12 +3,12 @@
 {% block content %}
     <div class="post-detail-wrapper">
         <div class="post-header">
-            <h3 class="overflow">{{ post }}</h3>
+            <h1 class="overflow">{{ post }}</h1>
                 {% with post.rating as rate %}
                     <span class="post-rating 
-                        {% if rate > 10 %}
+                        {% if rate > 0 %}
                             good
-                        {% elif rate < 0 %}
+                        {% else %}
                             bad
                         {% endif %}
                     ">★ {{ rate }}</span>
@@ -21,11 +21,34 @@
         </div>
 
         <div class="author-post">
-            <a class="text-link" href="{% url 'account:profile_detail' post.author.id %}">{{ post.author }}</a>
+            Автор: <a class="text-link" href="{% url 'account:profile_detail' post.author.id %}">{{ post.author }}</a>
         </div>
 
         <div class="post-body">
             {{ post.body }}
+        </div>
+
+        <div class="comment-form">
+            <form action="." method="post">
+                
+            </form>
+        </div>
+        
+        <div class="comments">
+            <ul class="comments-list">
+                {% for comment in comments %}
+                    <li class="comment">
+                        <svg height="2rem" width="2rem">
+                            <circle cx="1rem" cy="1rem" r="1rem" fill="#2e82ff"/>
+                        </svg>
+                        <div class="comment-body">
+                            <strong>{{ comment.name }}</strong>
+                            <span class="comment-date">{{ comment.created }}</span>
+                            <div class="comment-text">{{ comment.body }}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock content %}

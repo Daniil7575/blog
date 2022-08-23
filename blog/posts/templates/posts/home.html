@@ -12,12 +12,12 @@
             <span class="creation-date element">{{ p.published }}</span>
 
             <div class="post-author-rating element">
-                <span class="author overflow">{{ p.author.username }}</span>
+                <span class="author overflow">Автор: {{ p.author.username }}</span>
                 {% with p.rating as rate %}
                     <span class="rating 
-                        {% if rate > 10 %}
+                        {% if rate > 0 %}
                             good
-                        {% elif rate < 0 %}
+                        {% else %}
                             bad
                         {% endif %}
                     ">★ {{ rate }}</span>
@@ -32,11 +32,12 @@
         </div>
         {% endfor %}
         {% if page_obj.has_next %}
-        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
-    {% endif %}
+            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+        {% endif %}
+        <div class="loading" style="display: none;">Loading</div>
     </div>
 
-    <div class="loading" style="display: none;">Loading</div>
+    
 
     <script src="{% static 'posts/js/jquery.waypoints.min.js' %}"></script>
     <script src="/static/posts/js/infinite.min.js"></script>
