@@ -8,5 +8,5 @@ urlpatterns = [
         '<slug:post_slug>',
         PostDetail.as_view(), 
         name='post_detail'
-    ),
+    )
 ]

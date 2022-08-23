@@ -7,7 +7,7 @@
             {% csrf_token %}
             <div class="errors">
                 {% for _, val in user_form.errors.items %}
-                <strong class="error">{{val|striptags}}</strong>
+                <strong class="error">{{ val|striptags }}</strong>
             {% endfor %}
             </div>
             {% for field in user_form %}

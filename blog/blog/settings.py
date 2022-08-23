@@ -144,5 +144,3 @@ AUTHENTICATION_BACKENDS = [
     'account.authentication.EmailAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
-
-

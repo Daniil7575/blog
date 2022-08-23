@@ -28,19 +28,26 @@
             {{ post.body }}
         </div>
 
-        <div class="comment-form">
-            <form action="." method="post">
-                
-            </form>
-        </div>
-        
+        <form class="comment-form" action="./{{ post.slug }}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="{{ field.label }}">
+                    {{ field }} 
+                    <div class="error">{{ field.errors }}</div> 
+                </div>
+            {% endfor %}
+            <button type="submit">Оставить комментарий</button>
+        </form>
+
         <div class="comments">
             <ul class="comments-list">
                 {% for comment in comments %}
                     <li class="comment">
-                        <svg height="2rem" width="2rem">
-                            <circle cx="1rem" cy="1rem" r="1rem" fill="#2e82ff"/>
-                        </svg>
+                        <div class="avatar-plug">
+                            <svg height="2rem" width="2rem">
+                                <circle cx="1rem" cy="1rem" r="1rem" fill="#2e82ff"/>
+                            </svg>
+                        </div>
                         <div class="comment-body">
                             <strong>{{ comment.name }}</strong>
                             <span class="comment-date">{{ comment.created }}</span>
