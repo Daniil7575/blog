@@ -42,7 +42,7 @@ input {
     border: 1px solid #212529;
 }
 
-.submit-button button:active, .sign-up:active, .user-profile:active {
+.submit-button button:active, .sign-up:active, .user-profile:active, .comment-form-button:active {
     box-shadow: 0px 0px 1px 5px #2e82ff83;
 }
 
@@ -51,11 +51,11 @@ input {
     border: 1px solid #2e82ff;
 }
 
-.sign-up, .submit-button button {
-    transition: background-color 0.5s, box-shadow 0.2s;
+.sign-up, .submit-button button, .comment-form-button {
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-.sign-up:hover, .submit-button button:hover, .user-profile:hover {
+.sign-up:hover, .submit-button button:hover, .user-profile:hover, .comment-form-button:hover {
     background-color: #5297ff;
 }
 
@@ -344,25 +344,56 @@ svg {
     word-break: break-word;
 }
 
-.comment-form {
+/* .comment-form-with-avatar {
+    display: flex;
+    align-items: flex-start;
+} */
+
+.comment-form{
+    /* padding-left: 5px; */
     margin: 0;
     width: 100%;
+    margin-top: 15px;
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
 }
 
-.Body > *, .Body{
+.Body {
+    display: flex;
+}
+
+.Body{
     width: 100%;
 }
 
 .Body textarea {
+    width: 100%;
     min-height: 30px;
     height: 30px;
     border: none;
-    border-bottom: 1px solid #212529;
+    border-bottom: 1px solid #2e82ff;
     margin-bottom: 15px;
     resize: vertical;
+    padding: 0;
 }
 
-textarea:focus, textarea::selection {
-    border-bottom: 1px solid #2e82ff;
+textarea:focus {
+    border-bottom: 1px solid #5297ff;
     outline: none;
 }
+
+.avatar-plug-form {
+    padding-right: 5px;
+}
+
+.comment-form-button {
+    background-color: #2e82ff;
+    border-radius: 5px;
+    border: 1px #212529 solid;
+}
+
+.comment-form-button:active {
+    box-shadow: #2e82ff83;
+}
+

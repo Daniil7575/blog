@@ -27,16 +27,22 @@
         <div class="post-body">
             {{ post.body }}
         </div>
-
+        <div class="comment-form-with-avatar"></div>
+        
         <form class="comment-form" action="./{{ post.slug }}" method="post">
             {% csrf_token %}
             {% for field in form %}
                 <div class="{{ field.label }}">
+                    <div class="avatar-plug-form">
+                        <svg height="2rem" width="2rem">
+                            <circle cx="1rem" cy="1rem" r="1rem" fill="#2e82ff"/>
+                        </svg>
+                    </div>
                     {{ field }} 
                     <div class="error">{{ field.errors }}</div> 
                 </div>
             {% endfor %}
-            <button type="submit">Оставить комментарий</button>
+            <button class="comment-form-button" type="submit">Оставить комментарий</button>
         </form>
 
         <div class="comments">

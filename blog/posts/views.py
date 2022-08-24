@@ -45,13 +45,7 @@ class PostDetail(FormMixin, DetailView):
         else:
             return self.form_invalid(form)
 
-    def form_invalid(self, form) :
-        print()
-        return super().form_invalid(form)
-
     def form_valid(self, form: ModelForm, username):
-        print('VALIDATION')
-
         comment = form.save(commit=False)
         comment.name = username
         comment.post = self.object
