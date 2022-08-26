@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponseForbidden
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from django.forms import ModelForm
 
@@ -37,9 +39,13 @@ class PostDetail(FormMixin, DetailView):
         context['form'] = CommentForm()
         return context
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request: HttpRequest, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('account:login', permanent=True)
+
         self.object = self.get_object()
         form = self.get_form()
+        
         if form.is_valid():
             return self.form_valid(form, request.user.username)
         else:

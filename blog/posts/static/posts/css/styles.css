@@ -277,7 +277,7 @@ svg {
     font-weight: 700;
 }
 
-.line {
+line {
     margin-top: 5px;
     width: 100%;
     border-bottom: #2e82ff 1px solid;
@@ -397,3 +397,8 @@ textarea:focus {
     box-shadow: #2e82ff83;
 }
 
+.login-required {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #dc3545;
+}
