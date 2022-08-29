@@ -16,7 +16,7 @@ class Post(models.Model):
 
     slug = models.SlugField(max_length=200, unique=True)
 
-    body = models.TextField(verbose_name="Тело поста")
+    body = models.TextField(verbose_name="Контент")
 
     published = models.DateTimeField(
         verbose_name="Дата и время публикации", 

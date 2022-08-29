@@ -42,7 +42,7 @@ input {
     border: 1px solid #212529;
 }
 
-.submit-button button:active, .sign-up:active, .user-profile:active, .comment-form-button:active {
+.submit-button button:active, .sign-up:active, .user-profile:active, .comment-form-button:active, .new-post:active {
     box-shadow: 0px 0px 1px 5px #2e82ff83;
 }
 
@@ -51,11 +51,11 @@ input {
     border: 1px solid #2e82ff;
 }
 
-.sign-up, .submit-button button, .comment-form-button {
+.sign-up, .submit-button button, .comment-form-button, .new-post {
     transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-.sign-up:hover, .submit-button button:hover, .user-profile:hover, .comment-form-button:hover {
+.sign-up:hover, .submit-button button:hover, .user-profile:hover, .comment-form-button:hover, .new-post:hover {
     background-color: #5297ff;
 }
 
@@ -173,7 +173,7 @@ svg {
     /* min-height: 100%; */
 }
 
-.home-page-wrapper {
+.home-page-wrapper, .post-creation-wrapper {
     /* align-items: flex-start; */
     width: 65vw;
     padding-top: 50px;
@@ -277,7 +277,7 @@ svg {
     font-weight: 700;
 }
 
-line {
+line, .line {
     margin-top: 5px;
     width: 100%;
     border-bottom: #2e82ff 1px solid;
@@ -378,7 +378,7 @@ line {
     padding: 0;
 }
 
-textarea:focus {
+textarea:focus, .title-post-create:focus {
     border-bottom: 1px solid #5297ff;
     outline: none;
 }
@@ -387,13 +387,14 @@ textarea:focus {
     padding-right: 5px;
 }
 
-.comment-form-button {
+.comment-form-button, .new-post {
     background-color: #2e82ff;
     border-radius: 5px;
     border: 1px #212529 solid;
+    /* margin-bottom: 5px; */
 }
 
-.comment-form-button:active {
+.comment-form-button:active, .new-post:active {
     box-shadow: #2e82ff83;
 }
 
@@ -401,4 +402,52 @@ textarea:focus {
     padding-top: 20px;
     padding-bottom: 20px;
     color: #dc3545;
+}
+
+.margin-bott-10px {
+    margin-bottom: 10px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.alert, .post-create-form {
+    margin: 0;
+}
+
+.errorlist {
+    list-style: none;
+    color: #dc3545;
+}
+
+.post-create-form {
+    margin-top: 50px;
+    width: 100%;
+    align-items: flex-start;
+
+}
+
+.post-create-form > * {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.post-create-form {
+    width: auto;
+}
+
+.title-post-create input, .body-post-create textarea {
+    border: 1px #2e82ff solid;
+    margin-bottom: 10px;
+}
+
+.post-create-form .comment-form-button {
+    width: auto;
+    align-self: flex-end;
+}
+
+.new-post {
+    font-size: 1.5rem;
 }

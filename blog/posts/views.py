@@ -1,16 +1,16 @@
-from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest, HttpResponseForbidden
-from django.views.generic import ListView, DetailView
+from django.http import HttpRequest
+from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+from django.utils.text import slugify
+from django.contrib import messages
 
 from django.forms import ModelForm
 
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostsHome(ListView):
@@ -36,6 +36,7 @@ class PostDetail(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = context['post'].comments.all()
+        print(context['comments'])
         context['form'] = CommentForm()
         return context
 
@@ -59,23 +60,13 @@ class PostDetail(FormMixin, DetailView):
         return super(PostDetail, self).form_valid(comment)
 
 
-# @login_required
-# def comment_form(request: HttpRequest):
-#     if request.method == 'POST':
-#         comment = CommentForm(request.POST)
-#         if comment.is_valid():
-#             new_comment = comment.save(commit=False)
-#             new_comment['name'] = request.user.username
-#             new_comment.save()
-#             return render(
-#                 request, 
-#                 'posts/comment_form.html', 
-#                 {'new_comment': new_comment}
-#             )
-#     else:
-#         comment_form = CommentForm()
-#     return render(
-#         request, 
-#         'posts/comment_form.html',
-#         {'form': comment_form}
-#     )
+class PostCreationView(LoginRequiredMixin, CreateView):
+    form_class = PostForm
+    template_name = 'posts/post_create_form.html'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.slug = slugify(self.request.POST['title'])
+        post.author = self.request.user
+        post.save()
+        return super(PostCreationView, self).form_valid(form)
