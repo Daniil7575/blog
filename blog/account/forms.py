@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-
+from .models import Profile
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(
@@ -31,3 +31,23 @@ class RegisterForm(forms.ModelForm):
         except User.DoesNotExist:
             return cd['email']
         raise forms.ValidationError('Пользователь с такой почтой уже зарегистрирован.')
+
+
+class EditProfileFormUserData(forms.ModelForm):
+    class Meta:
+        model = User
+        fields =(
+            'username', 
+            'email',
+            'first_name',
+            'last_name',
+        )
+
+
+class EditProfileFormProfileData(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            'profile_image',
+            'date_of_birth'
+        )
