@@ -1,5 +1,6 @@
 # from django.contrib.auth.decorators import login_required
 # from django.contrib import messages
+from wsgiref.util import request_uri
 from django.shortcuts import render
 # from django.views.generic import DetailView
 from django.http import HttpRequest
@@ -8,7 +9,8 @@ from .forms import EditProfileFormProfileData, RegisterForm, EditProfileFormUser
 from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.shortcuts import redirect
+from django.core.files.storage import FileSystemStorage as Fss
 
 
 # Create your views here.
@@ -39,21 +41,22 @@ def profile_detail(request: HttpRequest, profile_id):
 def edit_profile_view(request: HttpRequest, profile_id):
     if request.method == "POST":
         # print(request.POST)
-        form_user = EditProfileFormUserData()
-        form_prof = EditProfileFormProfileData()
+        form_user = EditProfileFormUserData(data=request.POST, instance=request.user)
+        form_prof = EditProfileFormProfileData(
+            data=request.POST, 
+            instance=request.user.profile,
+            files=request.FILES
+        )
+        print(request.FILES)
         if form_user.is_valid() and form_prof.is_valid():
-
-            edit_profile = form.save(commit=False)
-            prof_image = form.cleaned_data['profile_image']
-            prof_dob = form.cleaned_data['date_of_birth']
-            edit_profile.save(commit=True)
+            user = form_user.save()
+            prof = form_prof.save()
             context = {
-                'form': edit_profile,
-                'image': prof_image,
-                'dob': prof_dob,
+                'u_form': user,
+                'p_form': prof,
             }
-            return render(request, 'account/profile_edit.html', context)
+            return redirect('account:profile_detail', profile_id=profile_id)
     else:
-        form_user = EditProfileFormUserData(instance=User.objects.get(pk=profile_id))
-        form_prof = EditProfileFormProfileData(instance=Profile.objects.get(pk=profile_id))
+        form_user = EditProfileFormUserData(instance=request.user)
+        form_prof = EditProfileFormProfileData(instance=request.user.profile)
     return render (request, 'account/profile_edit.html', {'u_form': form_user, 'p_form': form_prof})
