@@ -31,7 +31,9 @@
               <li><a href="#" class="nav-link px-2 bl-hover">Features</a></li>
               <li><a href="#" class="nav-link px-2 bl-hover">Pricing</a></li>
               <li><a href="#" class="nav-link px-2 bl-hover">FAQs</a></li>
-              <li><a href="#" class="nav-link px-2 bl-hover">About</a></li>
+              {% if request.user.is_authenticated %} 
+                <li><a href="{% url 'account:profile_edit' request.user.id %}" class="nav-link px-2 bl-hover">Настройки профиля</a></li> 
+              {% endif %}
             </ul>
             <div class="text-end">
               {% if request.user.is_authenticated %}

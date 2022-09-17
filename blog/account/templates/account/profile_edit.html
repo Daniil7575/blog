@@ -1,7 +1,7 @@
 {% extends 'posts/base.html' %}
 {% block title %}Профиль{% endblock title %}
 {% block content %}
-<form class="f" action="{% url 'account:profile_edit' request.user.id %}" method="post">
+<form class="f" action="{% url 'account:profile_edit' request.user.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ u_form.as_p }}
     {{ p_form.as_p }}
