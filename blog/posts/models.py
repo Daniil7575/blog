@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class Post(models.Model):
@@ -9,7 +10,6 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Автор",
         related_name="posts",
-        
     )
 
     title = models.CharField(verbose_name="Заголовок", max_length=200)
@@ -51,8 +51,12 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='comments'
     )
-
-    name = models.CharField(max_length=150)
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.CASCADE,
+        related_name='comments',
+    )
+    # name = models.CharField(max_length=150)
 
     body = models.TextField()
 
@@ -62,4 +66,4 @@ class Comment(models.Model):
         ordering = ['-created']
     
     def __str__(self) -> str:
-        return f'Комментарий {self.name} к посту {self.post}'
+        return f'Комментарий {self.user.username} к посту {self.post}'

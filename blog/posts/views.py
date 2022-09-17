@@ -1,3 +1,4 @@
+from urllib import request
 from django.http import HttpRequest
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import FormMixin
@@ -20,7 +21,7 @@ class PostsHome(ListView):
     template_name = 'posts/home.html'
 
     def get_queryset(self):
-        return Post.objects.all()
+        return Post.objects.all().select_related()
 
 
 class PostDetail(FormMixin, DetailView):
@@ -35,8 +36,7 @@ class PostDetail(FormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = context['post'].comments.all()
-        print(context['comments'])
+        context['comments'] = context['post'].comments.all().select_related()
         context['form'] = CommentForm()
         return context
 
@@ -48,13 +48,13 @@ class PostDetail(FormMixin, DetailView):
         form = self.get_form()
         
         if form.is_valid():
-            return self.form_valid(form, request.user.username)
+            return self.form_valid(form, request.user)
         else:
             return self.form_invalid(form)
 
-    def form_valid(self, form: ModelForm, username):
+    def form_valid(self, form: ModelForm, user):
         comment = form.save(commit=False)
-        comment.name = username
+        comment.user = user
         comment.post = self.object
         comment.save()
         return super(PostDetail, self).form_valid(comment)
